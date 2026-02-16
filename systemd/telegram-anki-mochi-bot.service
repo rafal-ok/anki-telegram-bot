@@ -1,0 +1,32 @@
+[Unit]
+Description=Telegram → Anki/Mochi Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/default/telegram-anki-mochi-bot
+# Example EnvironmentFile lines (create file and fill):
+# TELEGRAM_BOT_TOKEN=123456:ABC-...
+# CARD_GENERATION_BACKEND=codex
+# OPENAI_API_KEY=sk-...   # required only if CARD_GENERATION_BACKEND=openai
+# OPENAI_VISION_MODEL=gpt-4o-mini
+# ANKI_LANG=en
+# DEFAULT_DECK_NAME=Telegram Imports
+# DB_PATH=/var/lib/telegram-anki-mochi/anki_bot.db
+# EXPORT_DIR=/var/lib/telegram-anki-mochi/exports
+# SOURCE_DIR=/var/lib/telegram-anki-mochi/sources
+# BACKUP_DIR=/var/lib/telegram-anki-mochi/backups
+# MOCHI_API_KEY=...
+# MOCHI_DECK_ID=...
+WorkingDirectory=/opt/telegram-anki-mochi-bot
+ExecStart=/usr/bin/python3 /opt/telegram-anki-mochi-bot/telegram_anki_mochi_bot.py
+Restart=on-failure
+RestartSec=5
+
+# Hardening (optional)
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

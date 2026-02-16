@@ -1,0 +1,21 @@
+.DS_Store
+
+# Python cache/bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Local environment secrets
+.env
+.env.*
+!.env.example
+
+# Local runtime/state data
+anki_bot.db
+anki_bot.db-shm
+anki_bot.db-wal
+backups/
+exports/

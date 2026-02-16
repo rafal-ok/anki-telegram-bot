@@ -1,0 +1,6 @@
+openai>=1.40.0
+python-telegram-bot==21.*
+genanki>=0.13.0
+python-dotenv>=1.0.1
+pillow>=10.0.0
+requests>=2.31.0
